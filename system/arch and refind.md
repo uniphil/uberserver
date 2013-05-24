@@ -6,6 +6,8 @@ Most of the [Beginner's Guide](https://wiki.archlinux.org/index.php/Beginners'_G
 
 2) Partitioning
 
+uberserver's layout:
+
 * 500GB HD sda
 
   sda1: 200M   EF00 fat32 for EFI
@@ -13,5 +15,14 @@ Most of the [Beginner's Guide](https://wiki.archlinux.org/index.php/Beginners'_G
   sda3: 411.6G 8300 ext4  home
   sda4: 4G     8300 swap
 
+The macbook 2,1 will need at least:
 
-3) Mount everything [with `noatime`](https://wiki.archlinux.org/index.php/Pro_Audio#System_Configuration) in fstab. Just swap out the `relatime`s with `noatime`.
+ 1. a fat32 partition for efi
+ 2. another partion (ext4 is pretty solid) for `/`.
+
+
+3) Mount everything [with `noatime`](https://wiki.archlinux.org/index.php/Pro_Audio#System_Configuration) in fstab. Just swap out the `relatime`s with `noatime`. This step is just for avoiding xruns in JACK.
+
+4) ramdisk modules: add `ahci` and `sd_mod` to MODULES (`/etc/mkinitcpio.conf`) before running `mkinitcpio -p linux`.
+
+
