@@ -26,3 +26,42 @@ The macbook 2,1 will need at least:
 4) ramdisk modules: add `ahci` and `sd_mod` to MODULES (`/etc/mkinitcpio.conf`) before running `mkinitcpio -p linux`.
 
 
+## 5) Refind
+
+_(the tricky part)_
+
+chroot into your system
+
+```bash
+# mount /dev/sda2 /mnt
+# arch-chroot /mnt /bin/bash
+```
+
+install wget `# pacman -S wget`
+
+wget rod's refind from sourceforge (the first one, "A binary zip file", not the gnu-efi variant package.)
+
+get unzip `# pacman -S unzip`
+
+unzip and go to, and install refind
+
+```bash
+# unzip refind-bin-XXXXX.zip
+# cd refind-bin-XXXXX
+# sh install.sh
+```
+
+You should get `Installation has completed successfully.`
+
+---------------------------------------------------------------
+
+
+6) grub
+
+The 2,1 has 32-bit efi, but we're installing a 64-bit os (the intel dual core is 64-bit). Kernel stub EFI bootloading only works on systems where the bit-widths match, so we need ugly old grub as an intermediary.
+
+```bash
+# pacman -S grub-efi-i386
+# grub-install --target=i386-efi
+# grub-mkconfig -o /boot/grub/grub.cfg
+```
