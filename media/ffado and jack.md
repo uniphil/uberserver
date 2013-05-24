@@ -22,6 +22,7 @@ Here is the service file for `JACK` (`/etc/jack/jack.service`)
 Description=Jack Audio Connection Kit
 
 [Service]
+User=root
 ControlGroup=cpu:/
 ExecStart=/etc/jack/start-jack.sh
 ExecStop=/etc/jack/stop-jack.sh
@@ -30,5 +31,12 @@ ExecStop=/etc/jack/stop-jack.sh
 WantedBy=multi-user.target
 ```
 
-currently using [option 2](http://www.freedesktop.org/wiki/Software/systemd/MyServiceCantGetRealtime) to get realtime.
+note: currently using [option 2](http://www.freedesktop.org/wiki/Software/systemd/MyServiceCantGetRealtime) to get realtime.
+
+`/etc/jack/start-jack.sh` (don't forget to `# chmod +x`)
+
+```
+#!/bin/bash
+jackd -d firewire
+```
 
