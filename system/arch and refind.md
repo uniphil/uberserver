@@ -65,3 +65,5 @@ The 2,1 has 32-bit efi, but we're installing a 64-bit os (the intel dual core is
 # grub-install --target=i386-efi
 # grub-mkconfig -o /boot/grub/grub.cfg
 ```
+
+yay
