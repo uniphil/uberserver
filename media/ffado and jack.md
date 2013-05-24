@@ -63,3 +63,24 @@ find what the ports are called with jack_lsp
 alsa is set up with /etc/asound.conf for jack which works(!!!)... but xbmc ignores it and only finds hardware devices.
 
 installed xbmc-git
+
+... audio still doesn't work. back to...
+
+
+### pulseaudio.
+
+made sure jack module gets loaded (https://wiki.archlinux.org/index.php/PulseAudio/Examples#PulseAudio_through_JACK_the_new_new_way)
+
+installed pavucontrol, turned off the default internal sound card
+
+yay sound from xbmc!
+
+boo 6-channel surround bullshit from xbmc, setting it to 2.0 channel does nothing.
+
+options
+
+1. fix xbmc, have it obey the number of channels selected. nat.
+2. fix pulse jack loader. tell it to only use 2 channels connected to jack. nat.
+3. fix jack firewire start-up to only initiate with 2 channels. hmm....
+4. downmix from jack. ugh. (most realistic? really?)
+
