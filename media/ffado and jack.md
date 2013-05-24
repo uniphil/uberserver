@@ -48,4 +48,18 @@ pactl load-module module-jack-sink channels=2
 pacmd set-default-sink jack_out
 ```
 
-whee
+retrying without pulseaudio...
+
+install alsa as per beginner's guide
+
+install alsa-plugins
+
+install jack2
+
+install python2-dbus
+
+find what the ports are called with jack_lsp
+
+alsa is set up with /etc/asound.conf for jack which works(!!!)... but xbmc ignores it and only finds hardware devices.
+
+installed xbmc-git
