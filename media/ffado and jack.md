@@ -84,3 +84,16 @@ options
 3. fix jack firewire start-up to only initiate with 2 channels. hmm....
 4. downmix from jack. ugh. (most realistic? really?)
 
+
+taking path #2 (or at least assuming someone else may have)
+
+install pulseaudio-git from aur
+
+`/etc/pulse/default.pa`
+```
+load-module module-jackdbus-detect channels=2
+```
+
+hooray! (hopefully this will work in the main pulseaudio soon...)
+
+
