@@ -40,3 +40,12 @@ note: currently using [option 2](http://www.freedesktop.org/wiki/Software/system
 jackd -d firewire
 ```
 
+`~/.xinitrc` (for user `ship`)
+```
+pacmd suspend true
+exec xbmc-standalone
+pactl load-module module-jack-sink channels=2
+pacmd set-default-sink jack_out
+```
+
+whee
