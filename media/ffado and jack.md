@@ -97,3 +97,20 @@ load-module module-jackdbus-detect channels=2
 hooray! (hopefully this will work in the main pulseaudio soon...)
 
 
+## X-Runs
+
+default setup yeilds frequent x-runs running JACK for my firebox.
+
+1. install cpupower and set the governer to `performance` https://wiki.archlinux.org/index.php/Cpufreq
+
+```
+# pacman -S cpupower
+# cpupower frequency-set -g performance
+```
+
+the second one is not persistent.
+
+
+... and then do everything on the pro audio page except the rt-kernel. wouldn't hurt, but takes FOREVER to compile...
+
+still get some x-runs when starting/stopping, but otherwise it's pretty smooth.
