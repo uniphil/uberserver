@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="addon.jack.aux" name="jack aux" version="0.0.4" provider-name="uniphil">
+  <requires>
+		<import addon="xbmc.addon" version="12.0.0" />
+		<import addon="xbmc.gui" version="4.0.0" />
+		<import addon="xbmc.python" version="2.1.0" />
+	</requires>
+	<extension point="xbmc.python.script" library="patch.py">
+		<provides>audio</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Connect aux audio to the speakers. Because you're cool and running JACK.</summary>
+		<description lang="en">Blah blah blah blah blah</description>
+		<disclaimer lang="en">This plugin makes a lot of assumptions about your sytem. JACK is already running, right?</disclaimer>
+		<platform>linux</platform>
+		<language>en</language>
+		<license>GNU GPL v3</license>
+		<email>uniphil@gmail.com</email>
+	</extension>
+</addon>
