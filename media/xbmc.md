@@ -1,4 +1,3 @@
-
 ## old
 
 x has been set up (with `xorg-xinit` and everything as per the beginner's guide).
@@ -22,7 +21,7 @@ and then it's just `$ startx`.
 
 ### aux jack addon
 
-(`script.audio.jack`)[script.audio.jack] is sym-linked to `~/.xbmc/addons/` (something like `$ ln -s /path/to/script.audio.jack ~/.xbmc/addons/`)
+[`script.audio.jack`](script.audio.jack) is sym-linked to `~/.xbmc/addons/` (something like `$ ln -s /path/to/script.audio.jack ~/.xbmc/addons/`)
 
 patch the line-in ports to the main outs through the firebox. we've got a 3.5mm stereo -> 2 mono 1/4" cord always plugged into line-in for playing off phones/mp3 players etc.
 
