@@ -1,0 +1,19 @@
+<addon id="addon.gpio" name="gpio" version="0.0.4" provider-name="uniphil">
+  <requires>
+		<import addon="xbmc.addon" version="12.0.0" />
+		<import addon="xbmc.gui" version="4.0.0" />
+		<import addon="xbmc.python" version="2.1.0" />
+	</requires>
+	<extension point="xbmc.python.script" library="control.py">
+		<provides>audio</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary lang="en">Conrol the speaker power and lights and stuff.</summary>
+		<description lang="en">Blah blah blah blah blah</description>
+		<disclaimer lang="en">This plugin makes a lot of assumptions about your sytem. wheeeeeeeee</disclaimer>
+		<platform>linux</platform>
+		<language>en</language>
+		<license>GNU GPL v3</license>
+		<email>uniphil@gmail.com</email>
+	</extension>
+</addon>
