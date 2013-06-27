@@ -118,3 +118,5 @@ still get some x-runs when starting/stopping, but otherwise it's pretty smooth.
 
 ... installing linux-rt (from aur) takes care of the rest of the x-runs. don't forget `# grub-mkconfig -o /boot/grub/grub.cfg`
 
+
+rtkit group???????????
