@@ -51,3 +51,9 @@ installed but won't start (`/bin/sh: glxinfo: command not found`). `pacman -S me
 yeeeeeeeeeeeaaaaaaaaaaaaaaaaaaa!!! (it runs)
 
 
+## runnin
+
+initerestingly, when it starts up with jack already running, it throws an error a bunch of times: `jack_client_new: deprecated`.
+
+scrolling through audio output device in settings > system > audio output, it freezes after pulseaudio for about 30 sec, the console logs that jack_client_new deprecation warning, and then it reverts the its default blank state.
+
