@@ -1,4 +1,3 @@
-
 ## instal jack n stuff
 
 1. pacman installed `alsa-utils` and `ffado`
@@ -39,4 +38,8 @@ After reviewing the config, I went ahead and also grabbed `sudo pacman -S lame l
 `make -j2` (because my computer is dual-core)
 
 ... find something else to do forever while it compiles...
+
+hahaha if failed at samba. back a step: `./configure --disable-samba PYTHON_VERSION=2.7`
+
+aaaaaaand again. `make -j2`
 
