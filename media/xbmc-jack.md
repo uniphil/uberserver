@@ -1,4 +1,4 @@
-## instal jack n stuff
+## install jack n stuff
 
 1. pacman installed `alsa-utils` and `ffado`
 2. installed jack from source. probably not necessary, but... `./waf configure --dbus --firewire --alsa --enable-pkg-config-dbus-service-dir`
@@ -15,7 +15,7 @@ had to add `#include <unistd.h>` in `jackaudio.hpp` to make it build. The fix is
 ... and now the tests pass. yay!
 
 
-## get xbcm
+## get xbmc
 
 `git@github.com:xbmc/xbmc.git`
 
