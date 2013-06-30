@@ -43,3 +43,11 @@ hahaha if failed at samba. back a step: `./configure --disable-samba PYTHON_VERS
 
 aaaaaaand again. `make -j2`
 
+installed but won't start (`/bin/sh: glxinfo: command not found`). `pacman -S mesa-demos`...
+
+`sudo pacman -S xorg-xdpyinfo`
+
+
+yeeeeeeeeeeeaaaaaaaaaaaaaaaaaaa!!! (it runs)
+
+
