@@ -37,6 +37,7 @@ After reviewing the config, I went ahead and also grabbed `sudo pacman -S lame l
 
 `make -j2` (because my computer is dual-core)
 
+
 ... find something else to do forever while it compiles...
 
 hahaha if failed at samba. back a step: `./configure --disable-samba PYTHON_VERSION=2.7`
@@ -57,3 +58,28 @@ initerestingly, when it starts up with jack already running, it throws an error 
 
 scrolling through audio output device in settings > system > audio output, it freezes after pulseaudio for about 30 sec, the console logs that jack_client_new deprecation warning, and then it reverts the its default blank state.
 
+
+
+
+
+
+### hack.
+
+My efforts to make xbmc support jack:
+
+https://github.com/uniphil/xbmc (see the `jack` branch)
+
+(I borrowed a lot of ideas from http://yjpark.blogspot.ca/2009/11/xbmc-over-jack-revisited.html)
+
+It works! Hooray! _Almost_ all the bugs we had before with puleaudio are gone:
+
+ * UI sound enable/disable/only-when-stopped settings actually have an effect (they were always on before)
+ * UI sounds now honour whatever the volume is set at (were always full volume before)
+ * Crossfade settings are now honoured (were always on 5-ish seconds before with no way to disable)
+ * No more system freezes and fewer audio glitches. So far...
+
+XBMC still hangs after finishing playing an album sometimes (doesn't trigger `onPlaybackEnded`, UI stays as if it were playing a song [though the counter stops]). Although it seems to occur less frequently?
+
+The most glaring issue right now is a very short audio dropout happening a couple seconds before the end of most songs when there is something queued up to be played next.
+
+Before building, make sure you edit the top-level `Makefile` and add `-ljack` after `-lasound`.
