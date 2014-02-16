@@ -17,37 +17,55 @@ had to add `#include <unistd.h>` in `jackaudio.hpp` to make it build. The fix is
 
 ## get xbmc
 
+### Install requirements
+
+```sh
+# depends
+yaourt -S 'hicolor-icon-theme' 'fribidi' 'lzo2' 'smbclient' 'libtiff' 'libva' 'libpng' 'libcdio' 'yajl' 'libmysqlclient' 'libjpeg-turbo' 'libsamplerate' 'glew' 'libssh' 'libmicrohttpd' 'libxrandr' 'sdl_mixer' 'sdl_image' 'python2' 'libass' 'libmpeg2' 'libmad' 'libmodplug' 'jasper' 'rtmpdump' 'unzip' 'mesa-demos' 'xorg-xdpyinfo' 'libbluray' 'libnfs' 'afpfs-ng' 'avahi' 'bluez-libs' 'tinyxml' 'libcap' 'swig' 'taglib' 'java-runtime-headless' 'glu' 'mesa' 'shairplay-git' 'libxslt' 'libpulse'
+# make depends
+yaourt -S 'boost' 'cmake' 'git' 'gperf' 'nasm' 'libxinerama' 'zip' 'libva-vdpau-driver' 'libcec' 'udisks' 'upower')
+```
+
+### Get the source
 `git@github.com:xbmc/xbmc.git`
 
 I forked it and then branched off the Frodo branch for my jack experiments.
 
-Running `./bootstrap` warned that swig was not found, so I installed it (`pacman -S swig`) and then it ran without issue.
+```
+./bootstrap
+```
+
+Then, the following is important, else it cannot find samba:
+
+```
+sed -e 's/\(#include \)<libsmbclient\.h>/\1<samba-4.0\/libsmbclient\.h>/g' \
+        -i xbmc/filesystem/SmbFile.cpp \
+        -i xbmc/filesystem/SMBDirectory.cpp
+```
 
 I also got `ccache` to speed things up since I'll probably be recompiling a lot (recommended in `README.linux`).
 
-`./configure` failed on something that looked boost-related, so `pacman -S boost`....
+Before `./configure`, we want to use python 2:
 
-`./configure` choked on arch's default python3 setup... `./configure PYTHON_VERSION=2.7` did it.
+```
+export PYTHON_VERSION=2
+./configure
+```
 
-also needed `sudo pacman -S libgl glew tinyxml libmicrohttpd cmake gperf yasm ffmpeg`
+also needed `sudo pacman -S libgl yasm ffmpeg`
 
-After reviewing the config, I went ahead and also grabbed `sudo pacman -S lame libnfs libusb`
+After reviewing the config, I went ahead and also grabbed `sudo pacman -S lame libusb`
+
+Also, `sudo pacman -S mesa-demos xorg-xdpyinfo`.
 
 ### build!
 Before building, make sure you edit the top-level `Makefile` and add `-ljack` after `-lasound`.
 
 `make -j2` (because my computer is dual-core)
 
-
 ... find something else to do forever while it compiles...
 
-hahaha if failed at samba. back a step: `./configure --disable-samba PYTHON_VERSION=2.7`
-
-aaaaaaand again. `make -j2`
-
-installed but won't start (`/bin/sh: glxinfo: command not found`). `pacman -S mesa-demos`...
-
-`sudo pacman -S xorg-xdpyinfo`
+installed but won't start (
 
 
 yeeeeeeeeeeeaaaaaaaaaaaaaaaaaaa!!! (it runs)
@@ -57,12 +75,7 @@ yeeeeeeeeeeeaaaaaaaaaaaaaaaaaaa!!! (it runs)
 
 initerestingly, when it starts up with jack already running, it throws an error a bunch of times: `jack_client_new: deprecated`.
 
-scrolling through audio output device in settings > system > audio output, it freezes after pulseaudio for about 30 sec, the console logs that jack_client_new deprecation warning, and then it reverts the its default blank state.
-
-
-
-
-
+scrolling through audio output device in settings > system > audio output, it freezes after pulseaudio for about 30 sec, the console logs that `jack_client_new` deprecation warning, and then it reverts the its default blank state.
 
 ### hack.
 
