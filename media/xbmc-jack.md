@@ -34,6 +34,7 @@ also needed `sudo pacman -S libgl glew tinyxml libmicrohttpd cmake gperf yasm ff
 After reviewing the config, I went ahead and also grabbed `sudo pacman -S lame libnfs libusb`
 
 ### build!
+Before building, make sure you edit the top-level `Makefile` and add `-ljack` after `-lasound`.
 
 `make -j2` (because my computer is dual-core)
 
@@ -82,4 +83,3 @@ XBMC still hangs after finishing playing an album sometimes (doesn't trigger `on
 
 The most glaring issue right now is a very short audio dropout happening a couple seconds before the end of most songs when there is something queued up to be played next.
 
-Before building, make sure you edit the top-level `Makefile` and add `-ljack` after `-lasound`.
